@@ -9,7 +9,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 object ApiClient {
-    private const val BASE_URL = "https://api.edamam.com/api/recipes/v2/"
+    private const val BASE_URL = "https://www.themealdb.com/api/json/v1/1/"
 
     val apiService: RecipeApiService by lazy {
         val logging = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
@@ -21,7 +21,7 @@ object ApiClient {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(client)
-            .addConverterFactory(MoshiConverterFactory.create(moshi)) // <- Moshi with Kotlin adapter
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
             .create(RecipeApiService::class.java)
 
